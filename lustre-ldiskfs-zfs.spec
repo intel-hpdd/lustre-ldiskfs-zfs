@@ -1,13 +1,14 @@
 %{?systemd_requires}
 BuildRequires: systemd
 
-Name:		lustre-ldiskfs-zfs
-Version:	1.0.0
+Name:	lustre-ldiskfs-zfs
+Version:	1
 Release:	4%{?dist}
 Summary:	Package to install a Lustre storage server with both ldiskfs and ZFS support
 
 License:	MIT
-URL:		https://github.com/intel-hpdd/intel-manager-for-lustre
+URL:	https://github.com/intel-hpdd/%{name}
+Source0:	%{name}-%{version}.tgz
 
 Requires:	lustre
 Requires:	lustre-dkms
@@ -15,7 +16,7 @@ Requires:	kmod-lustre-osd-ldiskfs
 Requires:	zfs
 
 %description
-This is a packge you can install if you want to create a Lustre storage
+This is a package you can install if you want to create a Lustre storage
 server capable of creating both ldiskfs and ZFS targets.
 
 %prep
