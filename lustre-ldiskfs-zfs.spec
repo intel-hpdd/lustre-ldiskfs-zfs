@@ -2,7 +2,7 @@
 BuildRequires: systemd
 
 Name:		lustre-ldiskfs-zfs
-Version:	1
+Version:	1.0.0
 Release:	4%{?dist}
 Summary:	Package to install a Lustre storage server with both ldiskfs and ZFS support
 
