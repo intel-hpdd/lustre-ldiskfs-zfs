@@ -25,13 +25,13 @@ server capable of creating both ldiskfs and ZFS targets.
 %install
 
 %post
-%systemd_user_post zfs-import-none.service
+%systemd_post zfs-import-none.service
 
 %files
 %{_unitdir}/zfs-import-none.service
 
 %changelog
-* Fri Mar 2 2017 Joe Grund <joe.grund@intel.com> 1-4
+* Fri Mar 2 2018 Joe Grund <joe.grund@intel.com> 1-4
 - Add unit to start ZFS services post install.
 
 * Tue Aug 22 2017 Brian J. Murrell <brian.murrell@intel.com> 1-3
