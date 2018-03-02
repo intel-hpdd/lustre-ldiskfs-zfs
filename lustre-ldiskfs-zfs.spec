@@ -24,6 +24,8 @@ server capable of creating both ldiskfs and ZFS targets.
 %build
 
 %install
+mkdir -p %{buildroot}%{_unitdir}
+cp zfs-import-none.service %{buildroot}%{_unitdir}
 
 %post
 %systemd_post zfs-import-none.service
@@ -39,7 +41,7 @@ server capable of creating both ldiskfs and ZFS targets.
 - Remove LU-9745 hack now that that is fixed upstream
 
 * Tue Jul 11 2017 Brian J. Murrell <brian.murrell@intel.com> 1-2
-- Add %post to work around LU-9745 by removing the autoinstalled
+- Add post to work around LU-9745 by removing the autoinstalled
   lustre module and re-installing it
 
 * Fri Jul  7 2017 Brian J. Murrell <brian.murrell@intel.com> 1-1
