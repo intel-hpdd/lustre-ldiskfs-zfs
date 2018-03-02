@@ -1,4 +1,4 @@
-NAME            := lustre-ldisk-zfs
+NAME            := lustre-ldiskfs-zfs
 PACKAGE_VERSION := 1
 DIST_VERSION    := $(PACKAGE_VERSION)
 PACKAGE_RELEASE := 4
