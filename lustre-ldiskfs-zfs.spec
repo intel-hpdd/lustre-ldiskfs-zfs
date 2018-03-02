@@ -20,6 +20,7 @@ This is a package you can install if you want to create a Lustre storage
 server capable of creating both ldiskfs and ZFS targets.
 
 %prep
+%setup
 
 %build
 
