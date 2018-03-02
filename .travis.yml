@@ -14,6 +14,7 @@ jobs:
     before_install:
     - docker pull centos:centos7
     script:
+    - ./include/travis/run_in_centos7_docker.sh make rpmlint
     - ./include/travis/run_in_centos7_docker.sh include/travis/mock_build_test.sh
   - stage: deploy
     if: branch =~ ^v\d+\.\d+\.\d+-.+$
