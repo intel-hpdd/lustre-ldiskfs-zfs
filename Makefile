@@ -5,10 +5,10 @@ PACKAGE_RELEASE := 4
 
 include ./include/rpm.mk
 
-$(NAME)-$(PACKAGE_VERSION)-$(PACKAGE_RELEASE).tgz: zfs-import-none.service
-	mkdir $(NAME)-$(PACKAGE_VERSION)-$(PACKAGE_RELEASE)/
-	cp $< $(NAME)-$(PACKAGE_VERSION)-$(PACKAGE_RELEASE)/
-	tar czvf $@ $(NAME)-$(PACKAGE_VERSION)-$(PACKAGE_RELEASE)/
-	rm -rf $(NAME)-$(PACKAGE_VERSION)-$(PACKAGE_RELEASE)/
+$(NAME)-$(PACKAGE_VERSION).tgz: zfs-import-none.service
+	mkdir $(NAME)-$(PACKAGE_VERSION)/
+	cp $< $(NAME)-$(PACKAGE_VERSION)/
+	tar czvf $@ $(NAME)-$(PACKAGE_VERSION)/
+	rm -rf $(NAME)-$(PACKAGE_VERSION)/
 
-dist: $(NAME)-$(PACKAGE_VERSION)-$(PACKAGE_RELEASE).tgz
+dist: $(NAME)-$(PACKAGE_VERSION).tgz
