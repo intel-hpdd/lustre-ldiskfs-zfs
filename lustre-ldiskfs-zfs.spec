@@ -31,7 +31,11 @@ mkdir -p %{buildroot}%{_unitdir}
 cp %{unit_name} %{buildroot}%{_unitdir}
 
 %post
+systemctl disable zfs-import-scan
+systemctl disable zfs-import-cache
+systemctl disable zfs-mount
 systemctl enable %{unit_name}
+systemctl start %{unit_name}
 systemctl start zfs-zed.service
 
 %files
