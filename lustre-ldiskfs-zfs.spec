@@ -1,6 +1,8 @@
 %{?systemd_requires}
 BuildRequires: systemd
 
+%define	unit_name zfs-import-none.service
+
 Name:	lustre-ldiskfs-zfs
 Version:	1
 Release:	4%{?dist}
@@ -26,13 +28,14 @@ server capable of creating both ldiskfs and ZFS targets.
 
 %install
 mkdir -p %{buildroot}%{_unitdir}
-cp zfs-import-none.service %{buildroot}%{_unitdir}
+cp %{unit_name} %{buildroot}%{_unitdir}
 
 %post
-%systemd_post zfs-import-none.service
+systemctl enable %{unit_name}
+systemctl start %{unit_name}
 
 %files
-%{_unitdir}/zfs-import-none.service
+%{_unitdir}/%{unit_name}
 
 %changelog
 * Fri Mar 2 2018 Joe Grund <joe.grund@intel.com> 1-4
