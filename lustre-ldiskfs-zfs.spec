@@ -35,6 +35,8 @@ systemctl disable zfs-import-scan
 systemctl disable zfs-import-cache
 systemctl disable zfs-mount
 systemctl enable %{unit_name}
+# Remove following line once zfs-zed.service depends
+# on zfs.target like it should.
 systemctl start %{unit_name}
 systemctl start zfs-zed.service
 
