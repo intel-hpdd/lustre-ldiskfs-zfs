@@ -32,7 +32,7 @@ cp %{unit_name} %{buildroot}%{_unitdir}
 
 %post
 systemctl enable %{unit_name}
-systemctl start %{unit_name}
+systemctl start zfs-zed.service
 
 %files
 %{_unitdir}/%{unit_name}
