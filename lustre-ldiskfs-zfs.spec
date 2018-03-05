@@ -1,21 +1,21 @@
 %{?systemd_requires}
 BuildRequires: systemd
 
-%define	unit_name iml-zfs-import-none.service
+%define unit_name iml-zfs-import-none.service
 
-Name:	lustre-ldiskfs-zfs
-Version:	1
-Release:	4%{?dist}
-Summary:	Package to install a Lustre storage server with both ldiskfs and ZFS support
+Name:      lustre-ldiskfs-zfs
+Version:   2
+Release:   1%{?dist}
+Summary:   Package to install a Lustre storage server with both ldiskfs and ZFS support
 
-License:	MIT
-URL:	https://github.com/intel-hpdd/%{name}
-Source0:	%{name}-%{version}.tgz
+License:   MIT
+URL:       https://github.com/intel-hpdd/%{name}
+Source0:   %{name}-%{version}.tgz
 
-Requires:	lustre
-Requires:	lustre-dkms
-Requires:	kmod-lustre-osd-ldiskfs
-Requires:	zfs
+Requires:  lustre
+Requires:  lustre-dkms
+Requires:  kmod-lustre-osd-ldiskfs
+Requires:  zfs
 
 %description
 This is a package you can install if you want to create a Lustre storage
@@ -41,7 +41,7 @@ systemctl start zfs.target
 %{_unitdir}/%{unit_name}
 
 %changelog
-* Fri Mar 2 2018 Joe Grund <joe.grund@intel.com> 1-4
+* Fri Mar 2 2018 Joe Grund <joe.grund@intel.com> 2-1
 - Add unit to start ZFS services post install.
 
 * Tue Aug 22 2017 Brian J. Murrell <brian.murrell@intel.com> 1-3
