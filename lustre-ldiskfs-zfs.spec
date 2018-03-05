@@ -1,7 +1,7 @@
 %{?systemd_requires}
 BuildRequires: systemd
 
-%define	unit_name zfs-import-none.service
+%define	unit_name iml-zfs-import-none.service
 
 Name:	lustre-ldiskfs-zfs
 Version:	1
@@ -35,10 +35,7 @@ systemctl disable zfs-import-scan
 systemctl disable zfs-import-cache
 systemctl disable zfs-mount
 systemctl enable %{unit_name}
-# Remove following line once zfs-zed.service depends
-# on zfs.target like it should.
-systemctl start %{unit_name}
-systemctl start zfs-zed.service
+systemctl start zfs.target
 
 %files
 %{_unitdir}/%{unit_name}
