@@ -21,10 +21,10 @@ groupadd --gid "$(stat -c '%g' "$MAPPED_DIR")" mocker
 useradd --uid "$(stat -c '%u' "$MAPPED_DIR")" --gid "$(stat -c '%g' "$MAPPED_DIR")" mocker
 usermod -a -G mock mocker
 
-
 if ! su - mocker <<EOF; then
 set -xe
 cd "$MAPPED_DIR"
+make rpmlint
 make DIST_VERSION="$TRAVIS_PULL_REQUEST_BRANCH" build_test
 EOF
     exit "${PIPESTATUS[0]}"
