@@ -5,7 +5,7 @@ PACKAGE_RELEASE := 4
 
 include ./include/rpm.mk
 
-$(NAME)-$(PACKAGE_VERSION).tgz: zfs-import-none.service
+$(NAME)-$(PACKAGE_VERSION).tgz: iml-zfs-import-none.service
 	mkdir $(NAME)-$(PACKAGE_VERSION)/
 	cp $< $(NAME)-$(PACKAGE_VERSION)/
 	tar czvf $@ $(NAME)-$(PACKAGE_VERSION)/
