@@ -4,7 +4,7 @@
 MAPPED_DIR="${MAPPED_DIR:-/build}"
 
 echo 'travis_fold:start:yum'
-yum -y install git mock rpm-build ed sudo make rpmdevtools python-setuptools
+yum -y install git mock rpm-build ed sudo make rpmdevtools python-setuptools rpmlint
 echo 'travis_fold:end:yum'
 
 # add our repos to the mock configuration
