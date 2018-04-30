@@ -31,18 +31,26 @@ mkdir -p %{buildroot}%{_unitdir}
 cp %{unit_name} %{buildroot}%{_unitdir}
 
 %post
-systemctl disable zfs-import-scan
-systemctl disable zfs-import-cache
-systemctl disable zfs-mount
-systemctl enable %{unit_name}
+%systemd_preun zfs-import-scan
+%systemd_preun zfs-import-cache
+%systemd_preun zfs-mount
+%systemd_post %{unit_name}
+%systemd_post zfs.target
 systemctl start zfs.target
 
 %files
 %{_unitdir}/%{unit_name}
 
+%preun
+%systemd_preun %{unit_name}
+%systemd_post zfs-import-scan
+%systemd_post zfs-import-cache
+%systemd_post zfs-mount
+
 %changelog
 * Fri Mar 2 2018 Joe Grund <joe.grund@intel.com> 2-1
 - Add unit to start ZFS services post install.
+- Fixup spec to enable / disable correct units.
 
 * Tue Aug 22 2017 Brian J. Murrell <brian.murrell@intel.com> 1-3
 - Remove LU-9745 hack now that that is fixed upstream
