@@ -5,7 +5,7 @@ BuildRequires: systemd
 
 Name:      lustre-ldiskfs-zfs
 Version:   2
-Release:   1%{?dist}
+Release:   2%{?dist}
 Summary:   Package to install a Lustre storage server with both ldiskfs and ZFS support
 
 License:   MIT
@@ -31,16 +31,24 @@ mkdir -p %{buildroot}%{_unitdir}
 cp %{unit_name} %{buildroot}%{_unitdir}
 
 %post
-systemctl disable zfs-import-scan
-systemctl disable zfs-import-cache
-systemctl disable zfs-mount
-systemctl enable %{unit_name}
+%systemd_preun zfs-import-scan
+%systemd_preun zfs-import-cache
+%systemd_preun zfs-mount
+%systemd_post %{unit_name}
+%systemd_post zfs.target
 systemctl start zfs.target
 
 %files
 %{_unitdir}/%{unit_name}
 
+%preun
+%systemd_preun %{unit_name}
+%systemd_post zfs.target
+
 %changelog
+* Mon Apr 30 2018 Joe Grund <joe.grund@intel.com> 2-2
+- Fixup spec to enable / disable correct units.
+
 * Fri Mar 2 2018 Joe Grund <joe.grund@intel.com> 2-1
 - Add unit to start ZFS services post install.
 
