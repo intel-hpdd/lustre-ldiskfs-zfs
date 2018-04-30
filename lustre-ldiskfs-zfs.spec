@@ -28,24 +28,30 @@ server capable of creating both ldiskfs and ZFS targets.
 
 %install
 mkdir -p %{buildroot}%{_unitdir}
+mkdir -p %{buildroot}%{_presetdir}
 cp %{unit_name} %{buildroot}%{_unitdir}
+cp 00-zfs-import-none.preset %{buildroot}%{_presetdir}
 
 %post
-%systemd_preun zfs-import-scan
-%systemd_preun zfs-import-cache
-%systemd_preun zfs-mount
+systemctl preset zfs-import-scan.service
+systemctl stop zfs-import-scan.service
+systemctl preset zfs-import-cache.service
+systemctl stop zfs-import-cache.service
+systemctl preset zfs-mount.service
+systemctl stop zfs-mount.service
 %systemd_post %{unit_name}
 %systemd_post zfs.target
 systemctl start zfs.target
 
 %files
 %{_unitdir}/%{unit_name}
+%{_presetdir}/00-zfs-import-none.preset
 
 %preun
 %systemd_preun %{unit_name}
-%systemd_post zfs-import-scan
-%systemd_post zfs-import-cache
-%systemd_post zfs-mount
+systemctl enable zfs-import-scan.service
+systemctl enable zfs-import-cache.service
+systemct enable zfs-mount.service
 
 %changelog
 * Fri Mar 2 2018 Joe Grund <joe.grund@intel.com> 2-1
