@@ -1,7 +1,7 @@
 NAME            := lustre-ldiskfs-zfs
 PACKAGE_VERSION := 2
 DIST_VERSION    := $(PACKAGE_VERSION)
-PACKAGE_RELEASE := 2
+PACKAGE_RELEASE := 1
 
 include ./include/rpm.mk
 

@@ -5,7 +5,7 @@ BuildRequires: systemd
 
 Name:      lustre-ldiskfs-zfs
 Version:   2
-Release:   2%{?dist}
+Release:   1%{?dist}
 Summary:   Package to install a Lustre storage server with both ldiskfs and ZFS support
 
 License:   MIT
@@ -43,14 +43,14 @@ systemctl start zfs.target
 
 %preun
 %systemd_preun %{unit_name}
-%systemd_post zfs.target
+%systemd_post zfs-import-scan
+%systemd_post zfs-import-cache
+%systemd_post zfs-mount
 
 %changelog
-* Mon Apr 30 2018 Joe Grund <joe.grund@intel.com> 2-2
-- Fixup spec to enable / disable correct units.
-
 * Fri Mar 2 2018 Joe Grund <joe.grund@intel.com> 2-1
 - Add unit to start ZFS services post install.
+- Fixup spec to enable / disable correct units.
 
 * Tue Aug 22 2017 Brian J. Murrell <brian.murrell@intel.com> 1-3
 - Remove LU-9745 hack now that that is fixed upstream
