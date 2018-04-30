@@ -28,6 +28,7 @@ server capable of creating both ldiskfs and ZFS targets.
 
 %install
 mkdir -p %{buildroot}%{_unitdir}
+mkdir -p %{buildroot}%{_presetdir}
 cp %{unit_name} %{buildroot}%{_unitdir}
 cp 00-zfs-import-none.preset %{buildroot}%{_presetdir}
 
