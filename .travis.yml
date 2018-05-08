@@ -15,7 +15,7 @@ jobs:
     - docker pull centos:centos7
     script:
     - ./include/travis/run_in_centos7_docker.sh include/travis/mock_build_test.sh
-  - stage: deploy
+  - stage: deploy-copr
     if: branch =~ ^v\d+\.\d+\.\d+-.+$
     env: Type='Copr deploy'
     before_deploy:
