@@ -1,6 +1,6 @@
 ifneq ($(filter iml_%,$(MAKECMDGOALS)),)
   COPR_CONFIG := --config include/copr-mfl
-  OWNER_PROJECT = managerforlustre/manager-for-lustre
+  OWNER_PROJECT = managerforlustre/manager-for-lustre-devel
 else
   # local settings
   -include copr-local.mk
