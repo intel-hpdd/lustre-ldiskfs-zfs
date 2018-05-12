@@ -6,7 +6,7 @@
 [subrepo]
 	remote = git@github.com:intel-hpdd/module-tools.git
 	branch = master
-	commit = 80d034f0fe7ac1d9b6ac5528b05172e7ca9c79fd
-	parent = 574695f61848a36668ca5b588f7d0bdc372c9c67
+	commit = 0369fffef7d73c61c2092748477eda56112ec93d
+	parent = 71d375d0d26cb0aadb8a3b084ca761f275377f35
 	method = merge
 	cmdver = 0.4.0
