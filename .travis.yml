@@ -1,5 +1,8 @@
 language: generic
 sudo: required
+addons:
+  apt:
+    update: true
 services:
   - docker
 
