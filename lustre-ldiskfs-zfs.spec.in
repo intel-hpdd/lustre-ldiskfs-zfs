@@ -64,7 +64,7 @@ systemctl start zfs.target
 %systemd_preun %{unit_name}
 systemctl enable zfs-import-scan.service
 systemctl enable zfs-import-cache.service
-systemct enable zfs-mount.service
+systemctl enable zfs-mount.service
 
 %changelog
 * Tue May 8 2018 Brian J. Murrell <brian.murrell@intel.com> 3-1
