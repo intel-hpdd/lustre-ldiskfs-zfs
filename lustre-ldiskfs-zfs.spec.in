@@ -79,6 +79,8 @@ systemctl enable zfs-import-scan.service
 systemctl enable zfs-import-cache.service
 systemctl enable zfs-mount.service
 
+%files -n lustre-zfs
+
 %changelog
 * Thu Jul 5 2018 Joe Grund <jgrund@whamcloud.com> 3-1
 - create a lustre-zfs package
