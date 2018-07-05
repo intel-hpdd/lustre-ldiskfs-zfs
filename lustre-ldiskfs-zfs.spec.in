@@ -39,6 +39,7 @@ Summary: Package to install zfs and lustre (no ldiskfs)
 Requires: lustre-osd-zfs-mount
 Requires: lustre
 Requires: lustre-zfs-dkms
+Requires:  zfs
 
 %{?systemd_requires}
 
