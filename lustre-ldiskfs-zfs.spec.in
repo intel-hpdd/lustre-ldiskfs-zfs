@@ -36,9 +36,9 @@ server capable of creating both ldiskfs and ZFS targets.
 %package -n lustre-zfs
 Summary: Package to install zfs and lustre (no ldiskfs)
 
-Requires: lustre-dkms
+Requires: lustre-osd-zfs-mount
 Requires: lustre
-Requires: zfs
+Requires: lustre-zfs-dkms
 
 %{?systemd_requires}
 
