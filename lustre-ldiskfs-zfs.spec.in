@@ -43,7 +43,7 @@ Requires: kernel-devel-[0-9]\*_lustre
 
 %{?systemd_requires}
 
-%description lustre-zfs
+%description -n lustre-zfs
 This is a package you can install if you want to create a Lustre storage
 server capable of creating just zfs targets.
 
