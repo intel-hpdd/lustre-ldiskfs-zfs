@@ -5,7 +5,7 @@ Version:   @VERSION@
 Release:   @RELEASE@%{?dist}
 Summary:   Package to install a Lustre storage server with just ldiskfs support
 License:   MIT
-URL:       https://github.com/intel-hpdd/%{name}
+URL:       https://github.com/whamcloud/%{name}
 Source0:   %{unit_name}
 Source1:   00-zfs-import-none.preset
 
