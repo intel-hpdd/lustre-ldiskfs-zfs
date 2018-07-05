@@ -6,7 +6,7 @@
 [subrepo]
 	remote = git@github.com:whamcloud/module-tools.git
 	branch = master
-	commit = 0369fffef7d73c61c2092748477eda56112ec93d
+	commit = 460537b52f66f186f2f1201a97a5103414615de6
 	parent = b4a2c8760d58a044cdb23c9bf1b9a2460135d5ed
 	method = merge
 	cmdver = 0.4.0
