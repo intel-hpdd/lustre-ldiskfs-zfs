@@ -39,7 +39,6 @@ Summary: Package to install zfs and lustre (no ldiskfs)
 Requires: lustre-dkms
 Requires: lustre
 Requires: zfs
-Requires: kernel-devel-[0-9]\*_lustre
 
 %{?systemd_requires}
 
