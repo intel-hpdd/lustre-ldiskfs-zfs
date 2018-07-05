@@ -33,6 +33,20 @@ Requires:  zfs
 This is a package you can install if you want to create a Lustre storage
 server capable of creating both ldiskfs and ZFS targets.
 
+%package -n lustre-zfs
+Summary: Package to install zfs and lustre (no ldiskfs)
+
+Requires: lustre-dkms
+Requires: lustre
+Requires: zfs
+Requires: kernel-devel-[0-9]\*_lustre
+
+%{?systemd_requires}
+
+%description -n lustre-zfs
+This is a package you can install if you want to create a Lustre storage
+server capable of creating just zfs targets.
+
 %prep
 
 %build
@@ -67,6 +81,9 @@ systemctl enable zfs-import-cache.service
 systemctl enable zfs-mount.service
 
 %changelog
+* Thu Jul 5 2018 Joe Grund <jgrund@whamcloud.com> 3-1
+- create a lustre-zfs package
+
 * Tue May 8 2018 Brian J. Murrell <brian.murrell@intel.com> 3-1
 - produce both a lustre-ldiskfs and lustre-ldiskfs-zfs package
 
