@@ -23,7 +23,7 @@ server capable of creating just ldiskfs targets.
 Summary:   Package to install a Lustre storage server with both ldiskfs and ZFS support
 
 Requires:  lustre
-Requires:  lustre-dkms
+Requires:  lustre-zfs-dkms
 Requires:  kmod-lustre-osd-ldiskfs
 Requires:  zfs
 
