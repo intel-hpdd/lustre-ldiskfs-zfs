@@ -1,8 +1,8 @@
 %define unit_name iml-zfs-import-none.service
 
 Name:      lustre-ldiskfs
-Version:   @VERSION@
-Release:   @RELEASE@%{?dist}
+Version:   3
+Release:   1%{?dist}
 Summary:   Package to install a Lustre storage server with just ldiskfs support
 License:   MIT
 URL:       https://github.com/whamcloud/%{name}
@@ -39,7 +39,7 @@ Summary: Package to install zfs and lustre (no ldiskfs)
 Requires: lustre-osd-zfs-mount
 Requires: lustre
 Requires: lustre-zfs-dkms
-Requires:  zfs
+Requires: zfs
 
 %{?systemd_requires}
 
