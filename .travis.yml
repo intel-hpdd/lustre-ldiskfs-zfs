@@ -1,0 +1,26 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+jobs:
+  include:
+    - stage: test
+      name: "mock build test"
+      script:
+        - docker run -dit --name mock -v "$(pwd)":/mockdir --cap-add=SYS_ADMIN --privileged imlteam/mock
+        - docker exec -it mock bash -xec 'cd /mockdir && make -f .copr/Makefile outdir=/mockdir'
+        - docker exec -it mock bash -xec 'mock /tmp/_topdir/SRPMS/lustre-ldiskfs-*.el*.src.rpm -v --enable-network'
+    - stage: deploy-copr
+      name: "Copr deploy"
+      script:
+        - export OWNER=managerforlustre
+        - export PROJECT=manager-for-lustre
+        - export PACKAGE=lustre-ldiskfs-zfs
+        - export CLONE_URL=https://github.com/whamcloud/lustre-ldiskfs-zfs.git
+        - export SPEC=lustre-ldiskfs-zfs.spec
+        - docker run -it -e OWNER="$OWNER" -e PROJECT="$PROJECT" -e PACKAGE="$PACKAGE" -e CLONE_URL="$CLONE_URL" -e SPEC="$SPEC" -e KEY="$encrypted_253525cedcf6_key" -e IV="$encrypted_253525cedcf6_iv" -v $(pwd):/build:rw imlteam/copr
+stages:
+  - test
+  - name: deploy-copr
+    if: branch =~ ^v\d+\.\d+\.\d+-.+$
