@@ -1,5 +1,4 @@
 .DS_Store
-*.spec
-include/copr-mfl
 lustre-ldiskfs-zfs-*.tgz
 _topdir
+*.src.rpm
