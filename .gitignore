@@ -1,0 +1,4 @@
+.DS_Store
+lustre-ldiskfs-zfs-*.tgz
+_topdir
+*.src.rpm
