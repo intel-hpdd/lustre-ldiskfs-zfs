@@ -1,7 +1,8 @@
 %define unit_name iml-zfs-import-none.service
+%define lustre_version 2.12
 
 Name:      lustre-ldiskfs
-Version:   3.0.1
+Version:   4.0.0
 # Release Start
 Release:    1%{?dist}
 # Release End
@@ -11,8 +12,8 @@ URL:       https://github.com/whamcloud/%{name}
 Source0:   %{unit_name}
 Source1:   00-zfs-import-none.preset
 
-Requires:  lustre
-Requires:  kmod-lustre-osd-ldiskfs
+Requires:  lustre > %{lustre_version}
+Requires:  kmod-lustre-osd-ldiskfs > %{lustre_version}
 
 BuildRequires: systemd
 
@@ -24,9 +25,9 @@ server capable of creating just ldiskfs targets.
 %package zfs
 Summary:   Package to install a Lustre storage server with both ldiskfs and ZFS support
 
-Requires:  lustre
-Requires:  lustre-zfs-dkms
-Requires:  kmod-lustre-osd-ldiskfs
+Requires:  lustre > %{lustre_version}
+Requires:  lustre-zfs-dkms > %{lustre_version}
+Requires:  kmod-lustre-osd-ldiskfs > %{lustre_version}
 Requires:  zfs
 
 %{?systemd_requires}
@@ -38,9 +39,9 @@ server capable of creating both ldiskfs and ZFS targets.
 %package -n lustre-zfs
 Summary: Package to install zfs and lustre (no ldiskfs)
 
-Requires: lustre-osd-zfs-mount
-Requires: lustre
-Requires: lustre-zfs-dkms
+Requires: lustre-osd-zfs-mount > %{lustre_version}
+Requires: lustre > %{lustre_version}
+Requires: lustre-zfs-dkms > %{lustre_version}
 Requires: zfs
 
 %{?systemd_requires}
@@ -52,10 +53,10 @@ server capable of creating just zfs targets.
 %package zfs-patchless
 Summary:   Package to install a Lustre storage server with both patchless ldiskfs and ZFS support
 
-Requires:  lustre
+Requires:  lustre > %{lustre_version}
 Requires:  zfs
-Requires:  kmod-lustre-osd-ldiskfs
-Requires:  kmod-lustre-osd-zfs
+Requires:  kmod-lustre-osd-ldiskfs > %{lustre_version}
+Requires:  kmod-lustre-osd-zfs > %{lustre_version}
 
 %{?systemd_requires}
 
@@ -121,6 +122,10 @@ systemctl enable zfs-mount.service
 %files -n lustre-zfs
 
 %changelog
+* Wed Apr 24 2019 Joe Grund <jgrund@whamcloud.com> 4.0.0-1
+- Restrict lustre to > 2.12
+- Add patchless ldiskfs zfs install
+
 * Thu Jul 5 2018 Joe Grund <jgrund@whamcloud.com> 3-1
 - create a lustre-zfs package
 
