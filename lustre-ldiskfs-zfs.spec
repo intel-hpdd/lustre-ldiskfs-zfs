@@ -47,6 +47,21 @@ Requires: zfs
 This is a package you can install if you want to create a Lustre storage
 server capable of creating just zfs targets.
 
+%package zfs-patchless
+Summary:   Package to install a Lustre storage server with both patchless ldiskfs and ZFS support
+
+Requires:  lustre
+Requires:  zfs
+Requires:  kmod-lustre-osd-ldiskfs
+Requires:  kmod-lustre-osd-zfs
+
+%{?systemd_requires}
+
+%description zfs-patchless
+This is a package you can install if you want to create a Lustre storage
+server capable of creating both patchless ldiskfs and ZFS targets.
+This should use the "patchless" lustre server repository.
+
 %prep
 
 %build
@@ -75,6 +90,27 @@ systemctl start zfs.target
 %{_presetdir}/00-zfs-import-none.preset
 
 %preun zfs
+%systemd_preun %{unit_name}
+systemctl enable zfs-import-scan.service
+systemctl enable zfs-import-cache.service
+systemctl enable zfs-mount.service
+
+%post zfs-patchless
+systemctl preset zfs-import-scan.service
+systemctl stop zfs-import-scan.service
+systemctl preset zfs-import-cache.service
+systemctl stop zfs-import-cache.service
+systemctl preset zfs-mount.service
+systemctl stop zfs-mount.service
+%systemd_post %{unit_name}
+%systemd_post zfs.target
+systemctl start zfs.target
+
+%files zfs-patchless
+%{_unitdir}/%{unit_name}
+%{_presetdir}/00-zfs-import-none.preset
+
+%preun zfs-patchless
 %systemd_preun %{unit_name}
 systemctl enable zfs-import-scan.service
 systemctl enable zfs-import-cache.service
