@@ -1,5 +1,6 @@
 %define unit_name iml-zfs-import-none.service
 %define lustre_version 2.12
+%define zfs_version 0.7.13
 
 Name:      lustre-ldiskfs
 Version:   4.0.0
@@ -28,7 +29,7 @@ Summary:   Package to install a Lustre storage server with both ldiskfs and ZFS 
 Requires:  lustre > %{lustre_version}
 Requires:  lustre-zfs-dkms > %{lustre_version}
 Requires:  kmod-lustre-osd-ldiskfs > %{lustre_version}
-Requires:  zfs
+Requires:  zfs >= %{zfs_version}
 
 %{?systemd_requires}
 
@@ -42,7 +43,7 @@ Summary: Package to install zfs and lustre (no ldiskfs)
 Requires: lustre-osd-zfs-mount > %{lustre_version}
 Requires: lustre > %{lustre_version}
 Requires: lustre-zfs-dkms > %{lustre_version}
-Requires: zfs
+Requires: zfs >= %{zfs_version}
 
 %{?systemd_requires}
 
@@ -54,7 +55,7 @@ server capable of creating just zfs targets.
 Summary:   Package to install a Lustre storage server with both patchless ldiskfs and ZFS support
 
 Requires:  lustre > %{lustre_version}
-Requires:  zfs
+Requires:  zfs >= %{zfs_version}
 Requires:  kmod-lustre-osd-ldiskfs > %{lustre_version}
 Requires:  kmod-lustre-osd-zfs > %{lustre_version}
 
