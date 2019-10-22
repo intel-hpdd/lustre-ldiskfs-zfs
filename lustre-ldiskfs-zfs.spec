@@ -124,7 +124,7 @@ systemctl enable zfs-mount.service
 
 %changelog
 * Tue Oct 22 2019 Joe Grund <jgrund@whamcloud.com> 5.0.0-1
-- Restrict Lustre to > 2.12.3
+- Restrict Lustre to > 2.12.2
 
 * Wed Apr 24 2019 Joe Grund <jgrund@whamcloud.com> 4.0.0-1
 - Restrict lustre to > 2.12
