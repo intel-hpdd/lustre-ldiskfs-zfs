@@ -1,9 +1,9 @@
 %define unit_name iml-zfs-import-none.service
-%define lustre_version 2.12
+%define lustre_version 2.12.2
 %define zfs_version 0.7.13
 
 Name:      lustre-ldiskfs
-Version:   4.0.0
+Version:   5.0.0
 # Release Start
 Release:    1%{?dist}
 # Release End
@@ -123,6 +123,9 @@ systemctl enable zfs-mount.service
 %files -n lustre-zfs
 
 %changelog
+* Tue Oct 22 2019 Joe Grund <jgrund@whamcloud.com> 5.0.0-1
+- Restrict Lustre to > 2.12.2
+
 * Wed Apr 24 2019 Joe Grund <jgrund@whamcloud.com> 4.0.0-1
 - Restrict lustre to > 2.12
 - Add patchless ldiskfs zfs install
